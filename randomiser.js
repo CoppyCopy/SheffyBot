@@ -19,9 +19,8 @@ summer = { source: GachaResources.summerSource, total: GachaResources.getLength.
 valentine = { source: GachaResources.valentineSource, total: GachaResources.getLength.valentineLength},
 overload = { source: GachaResources.overloadSource, total: GachaResources.getLength.overloadLength},
 ];
-// userAkiraID = 389500570152730634;
-// userCoppyID = 174069912338169856;
-const VipUserIdList = ['389500570152730634', "174069912338169856"];
+
+const VipUserIdList = []; // This is just for funsies. Don't worry about it
 let threeStarsSource = '';
 let updateTotal = 0;
 let randomLimited = 0;
@@ -51,7 +50,7 @@ function randomiseUnit(numUnits, bannerType, vipUser) {
       }
       
       // Start randomise here
-      if (VipUserIdList.indexOf(vipUser) === -1) {
+      if (VipUserIdList.indexOf(vipUser) === -1) { // If the user is not VIP (THIS IS FOR TESTING ONLY)
         if (randomNum <= 79) { // Obtain 1 star unit
           const oneStar = Math.floor(Math.random() * oneStarTotal);
           randomUnits.push({stoneSource: oneStoneSource, source: oneStarSource[oneStar].source, isStar: 1, isSixStars: GachaResources.oneStarSource[oneStar].isSixStars});
@@ -72,7 +71,7 @@ function randomiseUnit(numUnits, bannerType, vipUser) {
           
         }
       } else {
-        // VIP only
+        // VIP only (THIS IS FOR TESTING ONLY)
         const threeStars = Math.floor(Math.random() * updateTotal);
         
         randomUnits.push({stoneSource: fiftyStonesSource, source: threeStarsSource[threeStars].source, isStar: 3, isSixStars: threeStarsSource[threeStars].isSixStars});
@@ -84,7 +83,7 @@ function randomiseUnit(numUnits, bannerType, vipUser) {
         }
       }
     } else { // On the tenth unit
-      if (VipUserIdList.indexOf(vipUser) === -1) {
+      if (VipUserIdList.indexOf(vipUser) === -1) { // If the user is not VIP (THIS IS FOR TESTING ONLY)
         let randomNum = Math.floor(Math.random() * 100) + 1;
         if (randomNum <= 97) { // Obtain 2 stars unit
           const twoStars = Math.floor(Math.random() * twoStarsTotal)
@@ -100,7 +99,7 @@ function randomiseUnit(numUnits, bannerType, vipUser) {
             randomUnits.slice(0)[0].isRainbow = 1;
           }
         }
-      } else {
+      } else { // (THIS IS FOR TESTING ONLY)
           const threeStars = Math.floor(Math.random() * updateTotal);
           randomUnits.push({stoneSource: fiftyStonesSource, source: threeStarsSource[threeStars].source, isStar: 3, isSixStars: threeStarsSource[threeStars].isSixStars});
           randomUnits[0].threeStars += 1;
