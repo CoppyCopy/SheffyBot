@@ -1,12 +1,10 @@
+// This creates a host server for the bot to stay alive
 require('http').createServer((req, res) => res.end('Sheffy is alive!')).listen(3000)
+
+// Libraries
 const Random = require('./randomiser.js');
 const wait = require('util').promisify(setTimeout);
 const childfork = require('child_process');
-
-function exec(cmd, handler = function(error, stdout, stderr){console.log(stdout);if(error !== null){console.log(stderr)}})
-{
-    return childfork.exec(cmd, handler);
-}
 
 // Font configurations
 const { registerFont } = require('canvas');
@@ -58,6 +56,12 @@ const gachaPosSize = {
   starPosW: 132, 
   starPosH: 138
 };
+
+// An execute function that handles the command lines
+function exec(cmd, handler = function(error, stdout, stderr){console.log(stdout);if(error !== null){console.log(stderr)}})
+{
+    return childfork.exec(cmd, handler);
+}
 
 // Logging into the discord
 discordClient.once('ready', client => {
